@@ -20,29 +20,53 @@ end
 #endgame logic
 define_method :end_game do 
   i=0
-  if board[i]=="x" && board[i+1] =="x"  && board[i+2] =="x"
+  if board[0]=="x" && board[1] =="x"  && board[2] =="x"
     puts "You won #{player_name}!"
     exit
-  elsif board[i]=="x" && board[i+3] =="x"  && board[i+6] =="x"
+  elsif board[3]=="x" && board[4] =="x"  && board[5] =="x"
     puts "You won #{player_name}!"
     exit
-    elsif board[i]=="x" && board[i+4] =="x"  && board[i+8] =="x"
+    elsif board[6]=="x" && board[7] =="x"  && board[8] =="x"
     puts "You won #{player_name}!"
     exit
-    elsif board[i]=="x" && board[i+2] =="x"  && board[i+3] =="x"
+    elsif board[0]=="x" && board[3] =="x"  && board[6] =="x"
     puts "You won #{player_name}!"
     exit
-  elsif board[i]=="o" && board[i+1] =="o"  && board[i+2] =="o" 
-    puts "computer won!"
-    exit
-     elsif board[i]=="o" && board[i+3] =="o"  && board[i+6] =="o" 
-    puts "computer won!"
-    exit
-       elsif board[i]=="o" && board[i+4] =="o"  && board[i+8] =="o"
+      elsif board[1]=="x" && board[4] =="x"  && board[7] =="x"
     puts "You won #{player_name}!"
     exit
-    elsif board[i]=="o" && board[i+2] =="o"  && board[i+3] =="o"
+      elsif board[2]=="x" && board[5] =="x"  && board[8] =="x"
     puts "You won #{player_name}!"
+    exit
+      elsif board[0]=="x" && board[4] =="x"  && board[8] =="x"
+    puts "You won #{player_name}!"
+    exit
+      elsif board[2]=="x" && board[4] =="x"  && board[6] =="x"
+    puts "You won #{player_name}!"
+    exit
+elsif board[0]=="o" && board[1] =="o"  && board[2] =="o"
+     puts "computer won!"
+    exit
+  elsif board[3]=="o" && board[4] =="o"  && board[5] =="o"
+     puts "computer won!"
+    exit
+    elsif board[6]=="o" && board[7] =="o"  && board[8] =="o"
+     puts "computer won!"
+    exit
+    elsif board[0]=="o" && board[3] =="o"  && board[6] =="o"
+     puts "computer won!"
+    exit
+      elsif board[1]=="o" && board[4] =="o"  && board[7] =="o"
+     puts "computer won!"
+    exit
+      elsif board[2]=="o" && board[5] =="o"  && board[8] =="o"
+     puts "computer won!"
+    exit
+      elsif board[0]=="o" && board[4] =="o"  && board[8] =="o"
+     puts "computer won!"
+    exit
+      elsif board[2]=="o" && board[4] =="o"  && board[6] =="o"
+     puts "computer won!"
     exit
   else
     return
@@ -94,16 +118,16 @@ end
 define_method :player_move do 
   puts "Choose a number between 1 and 9"
 index= gets.chomp.to_i
-if index <0 || index >8
+if index <0 || index >9
     puts "Please choose a number between 1 and 9"
     puts display_board(board)
       player_move
     
-elsif board[index]=="x" || board[index]=="o"
+elsif board[index -1]=="x" || board[index -1]=="o"
     puts "You can't choose a taken place"
     puts display_board(board)
     player_move
-elsif index > 0 && index< 8 || index==0
+elsif index > 0 && index< 9 || index!=0
     board[index -1]="x"
     puts display_board(board)
 end_game
