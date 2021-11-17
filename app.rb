@@ -105,10 +105,24 @@ define_method :computer_move do
   #remove all chosen parts from the array and put them into a new array
 available_numbers= board.select {|item| item!="x" && item!="o"}
 #let the computer choose from that new array
-  index = rand (available_numbers[0]...available_numbers[-1])
-  board[index]="o"
+#problem is here prolly
+#need to choose like [1,3,5,8], not 1...8
+  print available_numbers
+
+  index = available_numbers.sample(1).join.to_i
+
+  board[index -1]="o"
+puts "length is #{available_numbers.length}"
+  #put a log to show which number the comp chose
+  puts "computer chose #{index}"
+  print available_numbers
+  puts available_numbers
 puts display_board(board)
 end_game
+# tie functoionality
+if available_numbers.length == 0
+  puts "It's a tie!"
+end
 
 player_move
 end
